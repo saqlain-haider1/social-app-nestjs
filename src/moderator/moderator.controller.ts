@@ -12,6 +12,7 @@ import { CreateModeratorDto } from './dto/create-moderator.dto';
 import { UpdateModeratorDto } from './dto/update-moderator.dto';
 import { PaginationPostDto } from '../post/dto/pagination-post.dto';
 import { SortPostDto } from '../post/dto/sort-post.dto';
+import { LoginUserDto } from '../user/dto/login-user.dto';
 
 @Controller('moderator')
 export class ModeratorController {
@@ -20,6 +21,11 @@ export class ModeratorController {
   @Post()
   create(@Body() createModeratorDto: CreateModeratorDto) {
     return this.moderatorService.create(createModeratorDto);
+  }
+
+  @Post('login')
+  async login(@Body() loginUserDto: LoginUserDto) {
+    return await this.moderatorService.login(loginUserDto);
   }
 
   @Get()
